@@ -14,15 +14,15 @@ import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workf
 // resolved per-item at runtime. Declarative routing cannot express that.
 export class Humanhours implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'humanhours',
+		displayName: 'HumanHours',
 		name: 'humanhours',
 		icon: 'file:humanhours.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Track AI agent tasks; humanhours computes hours and euros saved.',
+		description: 'Track AI agent tasks; HumanHours computes hours and euros saved.',
 		defaults: {
-			name: 'humanhours',
+			name: 'HumanHours',
 		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],

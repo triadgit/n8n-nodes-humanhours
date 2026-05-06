@@ -9,7 +9,7 @@ import type {
 export class HumanhoursApi implements ICredentialType {
 	name = 'humanhoursApi';
 
-	displayName = 'Humanhours API';
+	displayName = 'HumanHours API';
 
 	icon: Icon = 'file:icons/humanhours.svg';
 
