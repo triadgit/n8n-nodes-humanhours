@@ -1,6 +1,6 @@
 # n8n-nodes-humanhours
 
-n8n community node for [humanhours](https://humanhours.dev). Track AI agent tasks straight from your n8n workflows; humanhours computes hours and euros saved and exposes them through a dashboard and Reports API.
+n8n community node for [humanhours](https://humanhours.dev). Track AI agent tasks straight from your n8n workflows; humanhours computes hours and money saved and exposes them through a dashboard and Reports API.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 

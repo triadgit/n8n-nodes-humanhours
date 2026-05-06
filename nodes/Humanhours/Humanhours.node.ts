@@ -20,7 +20,7 @@ export class Humanhours implements INodeType {
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Track AI agent tasks; HumanHours computes hours and euros saved.',
+		description: 'Track AI agent tasks; HumanHours computes hours and money saved.',
 		defaults: {
 			name: 'HumanHours',
 		},
