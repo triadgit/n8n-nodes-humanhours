@@ -16,7 +16,7 @@ export class Humanhours implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'HumanHours',
 		name: 'humanhours',
-		icon: 'file:humanhours.svg',
+		icon: { light: 'file:humanhours.svg', dark: 'file:humanhours.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',

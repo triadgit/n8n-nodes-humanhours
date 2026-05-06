@@ -11,7 +11,7 @@ export class HumanhoursApi implements ICredentialType {
 
 	displayName = 'HumanHours API';
 
-	icon: Icon = 'file:icons/humanhours.svg';
+	icon: Icon = { light: 'file:icons/humanhours.svg', dark: 'file:icons/humanhours.dark.svg' };
 
 	documentationUrl = 'https://humanhours.dev/docs/sdks/n8n';
 
