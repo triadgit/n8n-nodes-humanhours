@@ -4,6 +4,12 @@ All notable changes to `n8n-nodes-humanhours` are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-05-08
+
+### Fixed
+
+- Idempotency-Key now includes the node-run index, so workflows that fan into the HumanHours node multiple times within a single execution (loops, Split-In-Batches, sub-workflows, branch fan-in) record one event per run instead of collapsing into one. Before this fix, the second and subsequent runs of the node within the same execution returned the existing event from the first run, silently undercounting events.
+
 ## [0.1.3] - 2026-05-06
 
 ### Changed

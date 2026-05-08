@@ -10,8 +10,11 @@ import type {
 import { NodeApiError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
 // Programmatic style is required because each event needs an Idempotency-Key
-// header derived from the n8n execution id plus the item index, which is
-// resolved per-item at runtime. Declarative routing cannot express that.
+// header derived from the n8n execution id, the upstream node-run index,
+// and the item index, which is resolved per-item at runtime. Declarative
+// routing cannot express that. The run index disambiguates loops and
+// fan-in patterns where the same node runs multiple times within one
+// workflow execution.
 export class Humanhours implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'HumanHours',
@@ -185,13 +188,15 @@ export class Humanhours implements INodeType {
 					}
 				}
 
+				const sourceData = this.getInputSourceData();
+				const runIndex = sourceData?.previousNodeRun ?? 0;
 				const requestOptions: IHttpRequestOptions = {
 					method: 'POST',
 					url: `${baseUrl}/api/v1/track`,
 					body,
 					json: true,
 					headers: {
-						'Idempotency-Key': `${this.getExecutionId()}:${i.toString().padStart(4, '0')}`,
+						'Idempotency-Key': `${this.getExecutionId()}:${runIndex}:${i.toString().padStart(4, '0')}`,
 					},
 				};
 
