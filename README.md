@@ -31,6 +31,8 @@ The credential's **Test connection** button calls `GET /api/v1/agents` to verify
 
 ## Operations
 
+Pick a **Resource** first: **Event** to track agent runs, or **Company** to enrich domains for outreach.
+
 ### Track Event
 
 Send a single agent task event to humanhours.
@@ -45,6 +47,21 @@ Send a single agent task event to humanhours.
 | Metadata | no | Free-form JSON object attached to the event. Useful for `client`, `ticket_id`, `model`, or token counts. |
 
 The node sends an `Idempotency-Key` header derived from the n8n execution id and item index, so re-runs of the same workflow item are safe.
+
+### Company enrichment
+
+Under the **Company** resource, turn a domain into an outside-in labour-cost and automation business case, then pull the library for outreach.
+
+| Operation | Calls | Notes |
+|---|---|---|
+| Enrich Company | `POST /api/v1/companies` | Synchronous (15 to 30 seconds). Fields: Domain, plus Refresh, External ID, Tags. Charges one lookup when the domain is new or Refresh is on. |
+| Get Company | `GET /api/v1/companies/{domain}` | Reads one record from your library. Free. |
+| Refresh Company | `POST /api/v1/companies/{domain}/refresh` | Re-enriches an owned company. Charges one lookup. |
+| List Companies | `GET /api/v1/companies` | Return Format JSON emits one item per company; CSV emits a single `csv` field. Filter by Tag, cap with Limit. Free. |
+| Queue Bulk Enrichment | `POST /api/v1/companies/bulk` | Async. Domains (one per line, max 1000) plus Tags. Returns a `job_id`; lookups are charged per domain as the worker processes them. |
+| Get Job Status | `GET /api/v1/jobs/{id}` | Poll a bulk job until `status` is `done`. |
+
+Lookups are a hard cap with no overages (Pro 100 per month, Agency 500 pooled). Hitting the limit returns `lookup_quota_exceeded` until you upgrade.
 
 ## Usage patterns
 
@@ -73,6 +90,11 @@ so the dashboard can break down by model later.
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 
 ## Version history
+
+### 0.2.0
+
+- Added a `Company` resource with six enrichment operations: Enrich Company, Get Company, Refresh Company, List Companies, Queue Bulk Enrichment, and Get Job Status.
+- Grouped operations under a `Resource` selector. Existing `Track Event` workflows are unaffected.
 
 ### 0.1.0
 

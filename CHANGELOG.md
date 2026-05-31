@@ -4,6 +4,16 @@ All notable changes to `n8n-nodes-humanhours` are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-05-31
+
+### Added
+
+- Company enrichment operations under a new `Company` resource: `Enrich Company` (`POST /api/v1/companies`, synchronous), `Get Company`, `Refresh Company`, `List Companies` (JSON one item per company, or CSV), `Queue Bulk Enrichment` (`POST /api/v1/companies/bulk`, async job), and `Get Job Status`. Turn a domain into an outside-in labour-cost and automation business case, then pull the library for outreach.
+
+### Changed
+
+- Operations are now grouped under a `Resource` selector (`Event` for Track Event, `Company` for enrichment). Existing `Track Event` workflows keep working: the default resource is `Event` and the operation value is unchanged.
+
 ## [0.1.4] - 2026-05-08
 
 ### Fixed
@@ -38,6 +48,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `Humanhours API` credential with `apiKey` and `baseUrl` properties, plus a credential test against `GET /api/v1/agents`.
 - Idempotency-Key header derived from the n8n execution id plus item index, so re-runs of the same workflow item are safe.
 
+[0.2.0]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.2.0
+[0.1.4]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.1.4
 [0.1.3]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.1.3
 [0.1.2]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.1.2
 [0.1.1]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.1.1
