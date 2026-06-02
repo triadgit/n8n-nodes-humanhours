@@ -4,6 +4,12 @@ All notable changes to `n8n-nodes-humanhours` are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-06-02
+
+### Fixed
+
+- Codex `categories` dropped the unsupported `Developer Tools` value (n8n Cloud verification blocker). The node now lists `Development`, `Analytics`, and `Sales`.
+
 ## [0.2.0] - 2026-05-31
 
 ### Added
@@ -48,6 +54,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `Humanhours API` credential with `apiKey` and `baseUrl` properties, plus a credential test against `GET /api/v1/agents`.
 - Idempotency-Key header derived from the n8n execution id plus item index, so re-runs of the same workflow item are safe.
 
+[0.2.1]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.2.1
 [0.2.0]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.2.0
 [0.1.4]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.1.4
 [0.1.3]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.1.3
