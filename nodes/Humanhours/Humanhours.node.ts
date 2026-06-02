@@ -181,6 +181,28 @@ export class Humanhours implements INodeType {
 						description:
 							'Free-form JSON object attached to the event. Useful for client, ticket_id, model or token counts.',
 					},
+					{
+						displayName: 'Model',
+						name: 'model',
+						type: 'string',
+						default: '',
+						placeholder: 'anthropic/claude-opus-4.8',
+						description: 'Model used for this run, ideally the OpenRouter ID. With token counts, humanhours auto-prices the run cost into net_saved.',
+					},
+					{
+						displayName: 'Tokens In',
+						name: 'tokensIn',
+						type: 'number',
+						default: 0,
+						description: 'Input/prompt tokens for this run. Used with Model to compute cost.',
+					},
+					{
+						displayName: 'Tokens Out',
+						name: 'tokensOut',
+						type: 'number',
+						default: 0,
+						description: 'Output/completion tokens for this run. Used with Model to compute cost.',
+					},
 				],
 			},
 
@@ -341,6 +363,9 @@ export class Humanhours implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i, {}) as {
 						agentDurationSeconds?: number;
 						humanBaselineMinutes?: number;
+						model?: string;
+						tokensIn?: number;
+						tokensOut?: number;
 						metadata?: string | Record<string, unknown>;
 					};
 
@@ -362,6 +387,16 @@ export class Humanhours implements INodeType {
 						additionalFields.humanBaselineMinutes > 0
 					) {
 						body.human_baseline_minutes = additionalFields.humanBaselineMinutes;
+					}
+
+					if (typeof additionalFields.model === 'string' && additionalFields.model.trim().length > 0) {
+						body.model = additionalFields.model.trim();
+					}
+					if (typeof additionalFields.tokensIn === 'number' && additionalFields.tokensIn > 0) {
+						body.tokens_in = additionalFields.tokensIn;
+					}
+					if (typeof additionalFields.tokensOut === 'number' && additionalFields.tokensOut > 0) {
+						body.tokens_out = additionalFields.tokensOut;
 					}
 
 					if (additionalFields.metadata !== undefined && additionalFields.metadata !== null) {

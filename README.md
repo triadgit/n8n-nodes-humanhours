@@ -44,6 +44,8 @@ Send a single agent task event to humanhours.
 | Outcome | yes | `Success`, `Failure`, or `Needs Review` |
 | Agent Duration (seconds) | no | How long the agent took. Omit for zero. |
 | Human Baseline (minutes) | no | Override the baseline for this event. Leave empty to use the built-in or org-set baseline. |
+| Model | no | Model used, ideally the OpenRouter id (e.g. `anthropic/claude-opus-4.8`). With token counts, humanhours auto-prices the run into `net_saved`. |
+| Tokens In / Tokens Out | no | Prompt and completion token counts for the run. Used with Model to compute the real cost. |
 | Metadata | no | Free-form JSON object attached to the event. Useful for `client`, `ticket_id`, `model`, or token counts. |
 
 The node sends an `Idempotency-Key` header derived from the n8n execution id and item index, so re-runs of the same workflow item are safe.
@@ -90,6 +92,10 @@ so the dashboard can break down by model later.
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 
 ## Version history
+
+### 0.3.0
+
+- Track Event gained `Model`, `Tokens In`, and `Tokens Out`. Pass these (without an explicit Agent Cost) and humanhours auto-prices the run cost into `net_saved` for real net ROI.
 
 ### 0.2.0
 

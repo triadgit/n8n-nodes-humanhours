@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-humanhours",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"description": "n8n community node for HumanHours. Track AI agent tasks and enrich company domains into a labour-cost business case.",
 	"license": "MIT",
 	"homepage": "https://humanhours.dev",
