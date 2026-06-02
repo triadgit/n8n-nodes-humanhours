@@ -4,6 +4,12 @@ All notable changes to `n8n-nodes-humanhours` are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2026-06-02
+
+### Fixed
+
+- Codex `node` prefix corrected from the reserved `n8n-nodes-base.humanhours` to `n8n-nodes-humanhours.humanhours` (n8n Cloud verification blocker). The `n8n-nodes-base` prefix is reserved for n8n's built-in nodes; community packages must use their own npm package name as the prefix.
+
 ## [0.3.0] - 2026-06-02
 
 ### Added
@@ -60,6 +66,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `Humanhours API` credential with `apiKey` and `baseUrl` properties, plus a credential test against `GET /api/v1/agents`.
 - Idempotency-Key header derived from the n8n execution id plus item index, so re-runs of the same workflow item are safe.
 
+[0.3.1]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.3.1
 [0.3.0]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.3.0
 [0.2.1]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.2.1
 [0.2.0]: https://github.com/triadgit/n8n-nodes-humanhours/releases/tag/0.2.0

@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-base.humanhours",
+	"node": "n8n-nodes-humanhours.humanhours",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Analytics", "Sales"],
